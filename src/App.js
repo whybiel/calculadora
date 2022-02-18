@@ -4,41 +4,102 @@ import "./App.css"
 export default class Calc extends React.Component{
  
  state = {
-   n1:null,
-   n2:null,
-   res:null
+   n1: null,
+   n2: null,
+   res: null,
+   sinal: null
  }
 
  add = () => {
-   this.setState({
-     res: this.state.n1 + this.state.n2
-   })
+  if (this.state.n1 && this.state.n2 !== "null" || "") {
+    this.setState({
+      res: this.state.n1 + this.state.n2,
+      sinal: "+"
+    })
+  }else {
+    this.setState({
+      res: "Digite um valor nos espaços"
+    })
+  } 
+  
  }
  
  sub = () => {
-  this.setState({
-    res: this.state.n1 - this.state.n2
-  })
+  if (this.state.n1 && this.state.n2 !== "null" || "") {
+    this.setState({
+      res: this.state.n1 - this.state.n2,
+      sinal: "-"
+    })
+  }else {
+    this.setState({
+      res: "Digite um valor nos espaços"
+    })
+  } 
 }
 
 mult = () => {
-  this.setState({
-    res: this.state.n1 * this.state.n2
-  })
+  if (this.state.n1 && this.state.n2 !== "null" || "") {
+    this.setState({
+      res: this.state.n1 * this.state.n2,
+      sinal: "*"
+    })
+  }else {
+    this.setState({
+      res: "Digite um valor nos espaços"
+    })
+  } 
 }
 
 div = () => {
-  this.setState({
-    res: this.state.n1 / this.state.n2
-  })
+  if (this.state.n1 && this.state.n2 !== "null" || "") {
+    this.setState({
+      res: this.state.n1 / this.state.n2,
+      sinal: "÷"
+    })
+  }else {
+    this.setState({
+      res: "Digite um valor nos espaços"
+    })
+  } 
+}
+med = () => {
+  if (this.state.n1 && this.state.n2 !== "null" || "") {
+    this.setState({
+      res: (this.state.n1 + this.state.n2)/2,
+      sinal: "+/"
+    })
+  }else {
+    this.setState({
+      res: "Digite um valor nos espaços"
+    })
+  } 
+}
+porcent = () => {
+  if (this.state.n1 && this.state.n2 !== "null" || "") {
+    this.setState({
+      res: (this.state.n1 + this.state.n2)/100,
+      sinal: "+/100"
+    })
+  }else {
+    this.setState({
+      res: "Digite um valor nos espaços"
+    })
+  } 
 }
 
 clear = () => {
-  this.setState({
-    n1:"",
-    n2:"",
-    res: null
-  })
+  if (this.state.n1 && this.state.n2 !== "null" || "") {
+    this.setState({
+      n1:"",
+      n2:"",
+      res: 0,
+      sinal:""
+    })
+  } else {
+    this.setState({
+      res: "Digite um valor nos espaços"
+    })
+  }
 }
 
 handleChange1 = (e) => {
@@ -62,12 +123,15 @@ render(){
         <h2>{this.state.res}</h2>
         </div>
         <input onChange={this.handleChange1} value={this.state.n1} placeholder="Primeiro Número"/>
+        <h3>{this.state.sinal}</h3>
         <input onChange={this.handleChange2} value={this.state.n2} placeholder="Segundo Número"/>
         <div className="cont-btn">
         <button onClick={this.add}>+</button>
         <button onClick={this.sub}>-</button>
-        <button onClick={this.mult}>*</button>
-        <button onClick={this.div}>/</button>
+        <button onClick={this.mult}>x</button>
+        <button onClick={this.div}>÷</button>
+        <button onClick={this.med}>Me</button>
+        <button onClick={this.porcent}>%</button>
         <button onClick={this.clear}>C</button>
         </div>
       </div>
