@@ -66,7 +66,7 @@ med = () => {
   if (this.state.n1 && this.state.n2 !== "null" || "") {
     this.setState({
       res: (this.state.n1 + this.state.n2)/2,
-      sinal: "+/"
+      sinal: "+/2"
     })
   }else {
     this.setState({
@@ -77,7 +77,7 @@ med = () => {
 porcent = () => {
   if (this.state.n1 && this.state.n2 !== "null" || "") {
     this.setState({
-      res: (this.state.n1 + this.state.n2)/100,
+      res: (this.state.n1 * this.state.n2)/100,
       sinal: "+/100"
     })
   }else {
